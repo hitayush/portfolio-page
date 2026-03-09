@@ -8,11 +8,20 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
-    "express": "^4.22.1"
+    "clsx": "^2.1.1",
+    "express": "^4.22.1",
+    "framer-motion": "^12.35.2",
+    "lucide-react": "^0.577.0",
+    "react-tilt": "^1.0.2",
+    "tailwind-merge": "^3.5.0",
+    "typewriter-effect": "^2.22.0"
   },
   "author": "Hitayush Dange",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "autoprefixer": "^10.4.27",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.1"
   }
 }
