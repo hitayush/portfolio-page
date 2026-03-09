@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitayush Dange | Full-Stack Developer</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background glowing shapes -->
+    <div class="glow-shape shape-1"></div>
+    <div class="glow-shape shape-2"></div>
+    <div class="glow-shape shape-3"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">HD.</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <h1 class="hero-title">Hitayush Dange</h1>
+            <p class="hero-tagline">CSE Student | Python Developer | Aspiring Full-Stack Engineer</p>
+            <p class="hero-intro">
+                I am a Computer Science student passionate about building real-world applications and exploring AI, data
+                science, and modern web technologies. I focus on writing clean, efficient, and scalable code.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="assets/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content glass-card">
+                <p>Hello! I'm <strong>Hitayush Dange</strong>, a dedicated Computer Science student with a strong
+                    foundation in software development.</p>
+                <p>I thrive on turning complex problems into elegant, user-friendly solutions. Whether it's crafting
+                    responsive front-end interfaces, developing robust back-end APIs, or exploring the depths of Python
+                    and AI, I'm always eager to learn and grow as an engineer.</p>
+                <p>When I'm not coding, you can find me exploring new technologies, participating in hackathons, or
+                    contributing to open-source projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category glass-card">
+                    <h3>Programming</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C++</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass-card">
+                    <h3>Web Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>React.js</li>
+                        <li>Node.js & Express</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass-card">
+                    <h3>Data & Databases</h3>
+                    <ul class="skill-list">
+                        <li>SQL (MySQL, PostgreSQL)</li>
+                        <li>NoSQL (MongoDB)</li>
+                        <li>Data Structures</li>
+                        <li>Algorithms</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass-card">
+                    <h3>Tools & Others</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>Linux/Unix</li>
+                        <li>Agile/Scrum</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container glass-card">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="How can I help you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">Send Message</button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Hitayush Dange. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
