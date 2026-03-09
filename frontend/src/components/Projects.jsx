@@ -6,8 +6,8 @@ export default function Projects() {
     const projects = [
         {
             title: "Career Guidance AI Chatbot",
-            desc: "AI-based chatbot helping students choose appropriate career paths based on their interests and skills.",
-            tags: ["Python", "NLP", "Web Integration"],
+            desc: "A beginner-friendly, vibe-coded career guidance AI chatbot built using React and the Hugging Face API to help students choose paths based on their interests.",
+            tags: ["React", "Hugging Face API", "AI"],
             github: "https://github.com/hitayush/minorproject1.git",
             live: "#"
         },
