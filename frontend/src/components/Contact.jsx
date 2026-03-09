@@ -139,13 +139,13 @@ export default function Contact() {
                                 </p>
 
                                 <div className="space-y-4">
-                                    <a href="mailto:contact@example.com" className="flex items-center gap-4 hover:translate-x-2 transition-transform p-3 rounded-lg hover:bg-white/10">
+                                    <a href="mailto:hitayushdange@gmail.com" className="flex items-center gap-4 hover:translate-x-2 transition-transform p-3 rounded-lg hover:bg-white/10">
                                         <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                                             <Mail size={24} />
                                         </div>
                                         <div>
                                             <p className="text-sm font-medium opacity-80">Email</p>
-                                            <p className="font-semibold">contact@example.com</p>
+                                            <p className="font-semibold">hitayushdange@gmail.com</p>
                                         </div>
                                     </a>
 
