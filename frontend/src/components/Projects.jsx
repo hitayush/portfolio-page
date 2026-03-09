@@ -8,7 +8,7 @@ export default function Projects() {
             title: "Career Guidance AI Chatbot",
             desc: "AI-based chatbot helping students choose appropriate career paths based on their interests and skills.",
             tags: ["Python", "NLP", "Web Integration"],
-            github: "#",
+            github: "https://github.com/hitayush/minorproject1.git",
             live: "#"
         },
         {
