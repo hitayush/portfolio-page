@@ -149,7 +149,7 @@ export default function Contact() {
                                         </div>
                                     </a>
 
-                                    <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:translate-x-2 transition-transform p-3 rounded-lg hover:bg-white/10">
+                                    <a href="https://www.linkedin.com/in/hitayush-dange-65831a38b/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:translate-x-2 transition-transform p-3 rounded-lg hover:bg-white/10">
                                         <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                                             <Linkedin size={24} />
                                         </div>
