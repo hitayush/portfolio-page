@@ -17,43 +17,57 @@ export default function Education() {
     ];
 
     return (
-        <section id="education" className="py-20 bg-slate-50 dark:bg-slate-900/50 relative">
+        <section id="education" className="py-32 bg-transparent relative">
             <div className="bg-glow shape-2 absolute"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                    className="mb-20 text-center md:text-left"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-primary after:rounded">
-                        Education
+                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
+                        Academic Journey.
                     </h2>
-
-                    <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
-                        {educationData.map((item, index) => (
-                            <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white dark:border-slate-900 bg-slate-300 dark:bg-slate-700 group-[.is-active]:bg-primary text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                                    <div className="w-3 h-3 bg-white rounded-full"></div>
-                                </div>
-
-                                <motion.div
-                                    initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: 0.2 }}
-                                    className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-card dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow"
-                                >
-                                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{item.degree}</h3>
-                                    <p className="text-primary font-medium mb-2">{item.institution}</p>
-                                    {item.duration && <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">{item.duration}</p>}
-                                    <p className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">{item.score}</p>
-                                </motion.div>
-                            </div>
-                        ))}
-                    </div>
+                    <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
+                        Education
+                    </p>
                 </motion.div>
+
+                <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-[1px] before:bg-white/10 before:to-transparent">
+                    {educationData.map((item, index) => (
+                        <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                                className="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-800 bg-[#0a0a0a] shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors duration-500 group-hover:border-white/30"
+                            >
+                                <div className="w-3 h-3 bg-zinc-600 rounded-full group-hover:bg-white transition-colors duration-500"></div>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                                className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white/5 p-8 rounded-[2rem] border border-white/5 backdrop-blur-sm transition-all duration-500 hover:border-white/10"
+                            >
+                                <h3 className="text-2xl font-bold text-white tracking-tight mb-2">{item.degree}</h3>
+                                <p className="text-zinc-300 font-light mb-4">{item.institution}</p>
+                                <div className="flex flex-wrap gap-4 items-center">
+                                    {item.duration && <span className="text-sm font-light text-zinc-500 uppercase tracking-wider">{item.duration}</span>}
+                                    <span className="inline-block px-4 py-1.5 bg-white/10 text-white rounded-full text-xs font-semibold tracking-wider uppercase border border-white/5">
+                                        {item.score}
+                                    </span>
+                                </div>
+                            </motion.div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -2,38 +2,52 @@ import { motion } from 'framer-motion';
 
 export default function About() {
     return (
-        <section id="about" className="py-20 relative">
+        <section id="about" className="py-32 relative bg-transparent">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-primary after:rounded">
-                        About Me
-                    </h2>
+                    <div className="flex flex-col md:flex-row gap-16 items-start">
+                        <div className="md:w-1/3">
+                            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tighter">
+                                Decoding Context.
+                            </h2>
+                            <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
+                                About Me
+                            </p>
+                        </div>
 
-                    <div className="bg-card dark:bg-slate-800 rounded-2xl p-8 backdrop-blur-sm shadow-sm border border-slate-200 dark:border-slate-700">
-                        <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
-                            Hello! I am a dedicated Computer Science student with a strong drive for learning and building
-                            impactful software. My journey involves breaking down complex real-world problems into logical
-                            solutions.
-                        </p>
+                        <div className="md:w-2/3 bg-white/5 rounded-3xl p-10 backdrop-blur-sm border border-white/5 hover:border-white/10 transition-colors duration-500">
+                            <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed mb-10 font-light">
+                                Hello! I am a dedicated Computer Science student with a strong drive for learning and building
+                                impactful software. My journey involves breaking down complex real-world problems into logical
+                                solutions, merging creativity with engineering.
+                            </p>
 
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {[
-                                "Strong foundation in Python",
-                                "Exploring Data Science & AI",
-                                "Learning Full-Stack Development",
-                                "Focused on DSA & Problem Solving"
-                            ].map((item, index) => (
-                                <li key={index} className="flex items-center space-x-3 text-slate-700 dark:text-slate-300">
-                                    <span className="text-primary font-bold">▹</span>
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {[
+                                    "Strong foundation in Python",
+                                    "Exploring Data Science & AI",
+                                    "Learning Full-Stack Development",
+                                    "Focused on DSA & Problem Solving"
+                                ].map((item, index) => (
+                                    <motion.li 
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+                                        className="flex items-center space-x-4 text-zinc-400 font-light"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                                        <span>{item}</span>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </motion.div>
             </div>

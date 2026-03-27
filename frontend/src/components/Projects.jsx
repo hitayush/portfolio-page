@@ -9,29 +9,29 @@ export default function Projects() {
             desc: "A beginner-friendly, vibe-coded career guidance AI chatbot built using React and the Hugging Face API to help students choose paths based on their interests.",
             tags: ["React", "Hugging Face API", "AI"],
             github: "https://github.com/hitayush/minorproject1.git",
-            live: "#"
+            live: "/deploy-status.html"
         },
         {
-            title: "Python Data Analysis Dashboard",
+            title: "Data Analysis Dashboard",
             desc: "A professional dashboard for data visualization and generating actionable insights from complex datasets.",
             tags: ["Python", "Pandas", "Matplotlib"],
             github: "#",
-            live: "#"
+            live: "/deploy-status.html"
         },
         {
-            title: "Personal Finance Tracker",
-            desc: "A web application tool for daily expense tracking, categorizing spending, and basic budgeting.",
+            title: "Tic Tac Toe",
+            desc: "A classic, fully playable browser-based Tic Tac Toe game featuring interactive logic, grid design, and win-state detection.",
             tags: ["HTML", "CSS", "JavaScript"],
-            github: "#",
-            live: "#"
+            github: "https://github.com/hitayush/TICTACTOE",
+            live: "https://tictactoee28.netlify.app/"
         }
     ];
 
     const defaultTiltOptions = {
         reverse: false,
-        max: 15,
+        max: 5,
         perspective: 1000,
-        scale: 1.02,
+        scale: 1.01,
         speed: 1000,
         transition: true,
         axis: null,
@@ -40,59 +40,63 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-900/50 relative">
+        <section id="projects" className="py-32 bg-transparent relative">
             <div className="bg-glow shape-3 absolute"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                    className="mb-20 text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center relative inline-block left-1/2 -translate-x-1/2 after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-1 after:bg-primary after:rounded">
-                        Featured Projects
+                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
+                        Featured Works.
                     </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projects.map((project, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="h-full"
-                            >
-                                <Tilt options={defaultTiltOptions} className="h-full">
-                                    <div className="bg-card dark:bg-slate-800 p-6 rounded-2xl h-full flex flex-col shadow-sm border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
-                                        <h3 className="text-2xl font-bold mb-3 text-slate-800 dark:text-white">{project.title}</h3>
-                                        <p className="text-slate-600 dark:text-slate-400 mb-6 flex-grow">{project.desc}</p>
-
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.tags.map((tag, tagIdx) => (
-                                                <span key={tagIdx} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-200 dark:border-slate-700">
-                                            <a href={project.github} className="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium">
-                                                <Github size={18} />
-                                                Code
-                                            </a>
-                                            <a href={project.live} className="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium">
-                                                <ExternalLink size={18} />
-                                                Live Demo
-                                            </a>
-                                        </div>
-                                    </div>
-                                </Tilt>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
+                        Projects to scale
+                    </p>
                 </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((project, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.7, delay: idx * 0.15, ease: [0.25, 1, 0.5, 1] }}
+                            className="h-full"
+                        >
+                            <Tilt options={defaultTiltOptions} className="h-full">
+                                <div className="bg-[#0a0a0a] p-8 rounded-[2rem] h-full flex flex-col border border-white/5 hover:border-white/20 transition-all duration-500 group">
+                                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-zinc-200 transition-colors">{project.title}</h3>
+                                    <p className="text-zinc-400 mb-8 flex-grow font-light leading-relaxed">{project.desc}</p>
+
+                                    <div className="flex flex-wrap gap-2 mb-8">
+                                        {project.tags.map((tag, tagIdx) => (
+                                            <span key={tagIdx} className="px-4 py-1.5 bg-white/5 text-zinc-300 rounded-full text-xs font-semibold tracking-wider uppercase backdrop-blur-md border border-white/5">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors flex items-center gap-2 text-sm font-semibold uppercase tracking-widest">
+                                            <Github size={18} />
+                                            Code
+                                        </a>
+                                        <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors flex items-center gap-2 text-sm font-semibold uppercase tracking-widest">
+                                            <ExternalLink size={18} />
+                                            Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </Tilt>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -25,54 +25,67 @@ export default function Skills() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.15
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, scale: 0.9, y: 20 },
-        visible: { opacity: 1, scale: 1, y: 0 }
+        hidden: { opacity: 0, scale: 0.95, y: 30 },
+        visible: { 
+            opacity: 1, 
+            scale: 1, 
+            y: 0,
+            transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] }
+        }
     };
 
     return (
-        <section id="skills" className="py-20 bg-white dark:bg-slate-900 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="skills" className="py-32 bg-transparent relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                    className="mb-20 text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center md:text-left relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 md:after:left-0 after:-translate-x-1/2 md:after:translate-x-0 after:w-12 after:h-1 after:bg-primary after:rounded">
-                        My Skills
+                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
+                        Technical Arsenal.
                     </h2>
+                    <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
+                        Skills & Tools
+                    </p>
+                </motion.div>
 
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-                    >
-                        {skillCategories.map((category, idx) => (
-                            <motion.div
-                                key={idx}
-                                variants={itemVariants}
-                                className="bg-card dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors group"
-                            >
-                                <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-white group-hover:text-primary transition-colors">{category.title}</h3>
-                                <ul className="space-y-3">
-                                    {category.skills.map((skill, skillIdx) => (
-                                        <li key={skillIdx} className="flex items-center space-x-2 text-slate-600 dark:text-slate-300">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-secondary"></div>
-                                            <span>{skill}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    {skillCategories.map((category, idx) => (
+                        <motion.div
+                            key={idx}
+                            variants={itemVariants}
+                            className="bg-[#0a0a0a] p-8 rounded-[2rem] border border-white/5 hover:border-white/20 transition-all duration-500 group relative overflow-hidden"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <h3 className="text-2xl font-bold mb-6 text-white tracking-tight relative z-10">
+                                {category.title}
+                            </h3>
+                            <ul className="space-y-4 relative z-10">
+                                {category.skills.map((skill, skillIdx) => (
+                                    <li key={skillIdx} className="flex items-center space-x-3 text-zinc-400 font-light group/item">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover/item:bg-white transition-colors duration-300"></div>
+                                        <span className="group-hover/item:text-zinc-200 transition-colors duration-300">{skill}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    ))}
                 </motion.div>
             </div>
         </section>

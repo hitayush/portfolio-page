@@ -11,32 +11,12 @@ import CustomCursor from './components/CustomCursor';
 
 function App() {
     const [activeSection, setActiveSection] = useState('home');
-    const [isDarkMode, setIsDarkMode] = useState(false);
 
-    // Initialize theme based on system preference or saved preference
+    // Force dark mode
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            setIsDarkMode(true);
-            document.documentElement.classList.add('dark');
-        } else {
-            setIsDarkMode(false);
-            document.documentElement.classList.remove('dark');
-        }
+        document.documentElement.classList.add('dark');
     }, []);
 
-    const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode);
-        if (!isDarkMode) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        }
-    };
 
     // Scroll Spy functionality
     useEffect(() => {
@@ -67,7 +47,7 @@ function App() {
     return (
         <div className="min-h-screen bg-transparent transition-colors duration-300">
             <CustomCursor />
-            <Navbar activeSection={activeSection} toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+            <Navbar activeSection={activeSection} />
 
             <main>
                 <Hero />

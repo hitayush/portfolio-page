@@ -4,18 +4,20 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8">
+        <footer className="bg-transparent border-t border-white/5 py-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 md:mb-0">
-                    &copy; {new Date().getFullYear()} Hitayush Dange. All rights reserved.
+                <p className="text-zinc-500 font-medium text-sm mb-4 md:mb-0 uppercase tracking-widest">
+                    &copy; {new Date().getFullYear()} Hitayush. All rights reserved.
                 </p>
-                <button
-                    onClick={scrollToTop}
-                    className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors flex items-center gap-2"
-                    aria-label="Back to top"
-                >
-                    ↑ Top
-                </button>
+                <div className="flex items-center gap-8">
+                    <button
+                        onClick={scrollToTop}
+                        className="text-sm font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors flex items-center gap-2"
+                        aria-label="Back to top"
+                    >
+                        &uarr; Top
+                    </button>
+                </div>
             </div>
         </footer>
     );
