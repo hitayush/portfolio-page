@@ -18,11 +18,19 @@ export default function Contact() {
 
         try {
             // Using EmailJS to send the form data
+            // Log env variables to check if Vite loaded them (Warning: don't leave this in production)
+            if (!import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+                console.error("EmailJS environment variables are missing! Did you restart the Vite dev server after creating the .env file?");
+                throw new Error("Missing EmailJS environment variables.");
+            }
+
             const result = await emailjs.sendForm(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 form.current,
-                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+                {
+                    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+                }
             );
 
             if (result.text === 'OK') {
