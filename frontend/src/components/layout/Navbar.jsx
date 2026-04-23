@@ -1,16 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-
-const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'education', label: 'Education' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
-];
+import { navLinks } from '../../data/content';
 
 export default function Navbar({ activeSection }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -50,9 +41,9 @@ export default function Navbar({ activeSection }) {
                         Hitayush<span className="text-accent">.</span>
                     </button>
 
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-8">
-                        <ul className="flex gap-8">
+                    {/* Desktop Nav — tightened gaps for 7 links */}
+                    <div className="hidden md:flex items-center">
+                        <ul className="flex gap-5 lg:gap-7">
                             {navLinks.map((link) => (
                                 <li key={link.id}>
                                     <button

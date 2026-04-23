@@ -1,30 +1,9 @@
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { aboutData } from '../../data/content';
 
 export default function About() {
-    const sectionRef = useRef(null);
-
-    const capabilities = [
-        {
-            title: 'Python',
-            desc: 'Strong foundational logic and problem-solving through clean, readable code.',
-        },
-        {
-            title: 'Data & AI',
-            desc: 'Exploring predictive models, data pipelines, and machine learning fundamentals.',
-        },
-        {
-            title: 'Full-Stack',
-            desc: 'Building seamless interfaces that connect frontend experiences to backend logic.',
-        },
-        {
-            title: 'Algorithms',
-            desc: 'Focused on structured thinking and efficient problem-solving approaches.',
-        },
-    ];
-
     return (
-        <section id="about" ref={sectionRef} className="py-32 sm:py-40 relative">
+        <section id="about" className="py-32 sm:py-40 relative">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                     {/* Left — heading */}
@@ -63,7 +42,7 @@ export default function About() {
                         </motion.p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                            {capabilities.map((item, index) => (
+                            {aboutData.capabilities.map((item, index) => (
                                 <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 20 }}

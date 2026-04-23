@@ -1,23 +1,7 @@
 import { motion } from 'framer-motion';
+import { educationData } from '../../data/content';
 
 export default function Education() {
-    const educationData = [
-        {
-            degree: 'B.Tech in Computer Science',
-            institution: 'GH Raisoni College of Engineering & Management, Nagpur',
-            duration: '2024 – 2028',
-            score: 'CGPA: 7.5',
-            num: '01',
-        },
-        {
-            degree: 'Higher Secondary (12th)',
-            institution: 'General Sciences',
-            duration: '',
-            score: '74%',
-            num: '02',
-        },
-    ];
-
     return (
         <section id="education" className="py-32 relative bg-canvas-alt">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -49,12 +33,10 @@ export default function Education() {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 py-10 border-b border-ink-faint/30 group"
                         >
-                            {/* Number */}
                             <span className="editorial-number text-3xl sm:text-4xl shrink-0 w-12">
                                 {item.num}
                             </span>
 
-                            {/* Details */}
                             <div className="flex-1">
                                 <h3 className="text-2xl sm:text-3xl font-semibold text-ink tracking-tight mb-1 group-hover:text-accent transition-colors">
                                     {item.degree}
@@ -64,7 +46,6 @@ export default function Education() {
                                 </p>
                             </div>
 
-                            {/* Meta */}
                             <div className="sm:text-right shrink-0 flex sm:flex-col gap-4 sm:gap-1">
                                 {item.duration && (
                                     <span className="text-sm text-ink-muted tracking-wide">

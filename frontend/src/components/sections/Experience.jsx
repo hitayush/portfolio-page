@@ -1,23 +1,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { experienceData } from '../../data/content';
 
 export default function Experience() {
-    const experiences = [
-        {
-            role: 'Full-Stack Web Developer',
-            company: 'DialDoctor',
-            companyUrl: 'https://dialdoctor.in',
-            type: 'HealthTech Startup',
-            duration: 'Present',
-            num: '01',
-            responsibilities: [
-                'Building and maintaining full-stack web applications for a healthtech platform',
-                'Developing responsive, user-facing features with modern frontend frameworks',
-                'Collaborating with the team to ship features that connect patients with healthcare providers',
-            ],
-        },
-    ];
-
     return (
         <section id="experience" className="py-32 relative">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -40,7 +25,7 @@ export default function Experience() {
                 </motion.div>
 
                 <div className="flex flex-col gap-8">
-                    {experiences.map((exp, index) => (
+                    {experienceData.map((exp, index) => (
                         <motion.article
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
@@ -50,7 +35,6 @@ export default function Experience() {
                             className="group relative bg-canvas-alt rounded-3xl border border-ink-faint/20 overflow-hidden hover:border-accent/30 transition-all duration-500"
                         >
                             <div className="p-8 sm:p-10 lg:p-12">
-                                {/* Top row: number + duration */}
                                 <div className="flex items-start justify-between mb-6">
                                     <div className="flex items-baseline gap-4">
                                         <span className="editorial-number text-4xl sm:text-5xl">
@@ -63,12 +47,10 @@ export default function Experience() {
                                     </div>
                                 </div>
 
-                                {/* Role */}
                                 <h3 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight mb-2 leading-tight">
                                     {exp.role}
                                 </h3>
 
-                                {/* Company */}
                                 <div className="flex items-center gap-3 mb-8">
                                     <a
                                         href={exp.companyUrl}
@@ -85,7 +67,6 @@ export default function Experience() {
                                     </span>
                                 </div>
 
-                                {/* Responsibilities */}
                                 <ul className="space-y-3">
                                     {exp.responsibilities.map((item, i) => (
                                         <li key={i} className="flex items-start gap-3 text-ink-muted font-serif text-base leading-relaxed">
@@ -96,7 +77,6 @@ export default function Experience() {
                                 </ul>
                             </div>
 
-                            {/* Bottom accent line */}
                             <div className="h-[3px] bg-ink-faint/10">
                                 <div className="h-full bg-accent w-0 group-hover:w-full transition-all duration-700 ease-out" />
                             </div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { ArrowDown } from 'lucide-react';
+import { personalInfo } from '../../data/content';
 
 export default function Hero() {
     const containerVariants = {
@@ -42,19 +43,19 @@ export default function Hero() {
                             variants={itemVariants}
                             className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-4 text-ink"
                         >
-                            Hitayush
+                            {personalInfo.firstName}
                             <br />
-                            <span className="text-accent">Dange</span>
+                            {personalInfo.lastName}
                             <span className="text-ink-faint">.</span>
                         </motion.h1>
 
                         <motion.div
                             variants={itemVariants}
-                            className="text-xl sm:text-2xl text-ink-muted font-light tracking-tight mb-8 h-9 font-serif"
+                            className="text-xl sm:text-2xl text-ink-muted font-light tracking-tight mb-8 min-h-[36px] font-serif"
                         >
                             <Typewriter
                                 options={{
-                                    strings: ['CSE Student', 'Python Developer', 'Aspiring Full-Stack Engineer'],
+                                    strings: personalInfo.roles,
                                     autoStart: true,
                                     loop: true,
                                     delay: 50,
@@ -67,9 +68,7 @@ export default function Hero() {
                             variants={itemVariants}
                             className="text-base sm:text-lg text-ink-muted mb-10 max-w-lg leading-relaxed font-serif"
                         >
-                            I'm a computer science student passionate about turning ideas into
-                            real-world applications — exploring AI, data science, and the craft
-                            of modern web development.
+                            {personalInfo.tagline}
                         </motion.p>
 
                         <motion.div
@@ -101,13 +100,12 @@ export default function Hero() {
                         <div className="relative w-[340px] h-[420px] rounded-3xl overflow-hidden shadow-[0_24px_80px_-12px_rgba(43,41,38,0.15)] border border-ink-faint/20">
                             <img
                                 src="/profile.jpg"
-                                alt="Hitayush Dange"
+                                alt={personalInfo.name}
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                     e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop';
                                 }}
                             />
-                            {/* Warm bottom fade */}
                             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-canvas/60 to-transparent pointer-events-none" />
                         </div>
                     </motion.div>

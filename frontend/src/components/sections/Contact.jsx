@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github as GithubIcon, Send } from 'lucide-react';
+import { Mail, Linkedin, Github as GithubIcon, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { personalInfo } from '../../data/content';
 
 export default function Contact() {
     const form = useRef();
@@ -118,14 +119,17 @@ export default function Contact() {
                                 />
                             </div>
 
+                            {/* Warm-themed toasts */}
                             {status.success && (
-                                <div className="p-4 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl text-sm font-medium">
+                                <div className="flex items-center gap-3 p-4 bg-accent-subtle border border-accent/20 rounded-xl text-sm font-medium text-accent">
+                                    <CheckCircle size={18} />
                                     Message sent successfully!
                                 </div>
                             )}
                             {status.error && (
-                                <div className="p-4 bg-red-50 text-red-600 border border-red-200 rounded-xl text-sm font-medium">
-                                    Failed to send message. Please try again.
+                                <div className="flex items-center gap-3 p-4 bg-red-50 text-red-600 border border-red-200 rounded-xl text-sm font-medium">
+                                    <AlertCircle size={18} />
+                                    Failed to send. Please try again.
                                 </div>
                             )}
 
@@ -164,7 +168,7 @@ export default function Contact() {
 
                             <div className="space-y-3">
                                 <a
-                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=hitayushdange@gmail.com"
+                                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfo.email}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-5 p-4 rounded-2xl hover:bg-canvas transition-colors group"
@@ -174,12 +178,12 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="text-xs font-semibold text-ink-muted uppercase tracking-widest mb-0.5">Email</p>
-                                        <p className="font-medium text-ink text-sm">hitayushdange@gmail.com</p>
+                                        <p className="font-medium text-ink text-sm">{personalInfo.email}</p>
                                     </div>
                                 </a>
 
                                 <a
-                                    href="https://www.linkedin.com/in/hitayush-dange-65831a38b/"
+                                    href={personalInfo.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-5 p-4 rounded-2xl hover:bg-canvas transition-colors group"
@@ -189,12 +193,12 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="text-xs font-semibold text-ink-muted uppercase tracking-widest mb-0.5">LinkedIn</p>
-                                        <p className="font-medium text-ink text-sm">Hitayush Dange</p>
+                                        <p className="font-medium text-ink text-sm">{personalInfo.name}</p>
                                     </div>
                                 </a>
 
                                 <a
-                                    href="https://github.com/hitayush"
+                                    href={personalInfo.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-5 p-4 rounded-2xl hover:bg-canvas transition-colors group"

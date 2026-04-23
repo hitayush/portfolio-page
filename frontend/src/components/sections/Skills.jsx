@@ -1,29 +1,7 @@
 import { motion } from 'framer-motion';
+import { skillCategories } from '../../data/content';
 
 export default function Skills() {
-    const skillCategories = [
-        {
-            title: 'Programming',
-            skills: ['Python', 'C++', 'JavaScript'],
-        },
-        {
-            title: 'Web & Frameworks',
-            skills: ['HTML', 'CSS', 'React', 'Node.js', 'FastAPI'],
-        },
-        {
-            title: 'Data & Visualization',
-            skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
-        },
-        {
-            title: 'AI & ML',
-            skills: ['Scikit-learn', 'LLMs', 'Ollama', 'LM Studio', 'Gemma', 'AI Integration'],
-        },
-        {
-            title: 'Tools',
-            skills: ['Git', 'GitHub', 'VS Code', 'Claude Code', 'Anaconda', 'Jupyter Lab'],
-        },
-    ];
-
     return (
         <section id="skills" className="py-32 relative">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -45,7 +23,8 @@ export default function Skills() {
                     <div className="section-divider" />
                 </motion.div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+                {/* 3-column grid for 5 categories — no orphan row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
                     {skillCategories.map((category, idx) => (
                         <motion.div
                             key={idx}

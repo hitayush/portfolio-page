@@ -1,37 +1,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { projectsData } from '../../data/content';
 
 export default function Projects() {
-    const projects = [
-        {
-            title: 'Career Guidance AI Chatbot',
-            desc: 'A career guidance AI chatbot built using React and the Hugging Face API. It helps students explore career paths through conversational AI — my first real dive into integrating machine learning APIs with a modern frontend.',
-            tags: ['React', 'Hugging Face API', 'AI'],
-            github: 'https://github.com/hitayush/minorproject1.git',
-            live: '/deploy-status.html',
-            num: '01',
-            year: '2025',
-        },
-        {
-            title: 'Data Analysis Dashboard',
-            desc: `A professional dashboard for visualizing complex datasets and generating actionable insights. Built with Python's data science stack to explore patterns and tell stories hidden in numbers.`,
-            tags: ['Python', 'Pandas', 'Matplotlib'],
-            github: 'https://github.com/hitayush/Data.Dash',
-            live: 'https://data-analysis-dashboard-six.vercel.app/',
-            num: '02',
-            year: '2026',
-        },
-        {
-            title: 'Tic Tac Toe',
-            desc: 'A classic, fully playable browser-based game with interactive logic and clean grid design. A foundational project that sharpened my understanding of DOM manipulation and game state management.',
-            tags: ['HTML', 'CSS', 'JavaScript'],
-            github: 'https://github.com/hitayush/TICTACTOE',
-            live: 'https://tictactoee28.netlify.app/',
-            num: '03',
-            year: '2024',
-        },
-    ];
-
     return (
         <section id="projects" className="py-32 relative bg-canvas-alt">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -54,7 +25,7 @@ export default function Projects() {
                 </motion.div>
 
                 <div className="flex flex-col gap-8">
-                    {projects.map((project, idx) => (
+                    {projectsData.map((project, idx) => (
                         <motion.article
                             key={idx}
                             initial={{ opacity: 0, y: 40 }}
@@ -84,19 +55,21 @@ export default function Projects() {
                                         >
                                             <Github size={16} />
                                         </a>
-                                        <a
-                                            href={project.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-10 h-10 rounded-full border border-ink-faint/30 flex items-center justify-center text-ink-muted hover:border-accent hover:text-canvas hover:bg-accent transition-all"
-                                            aria-label={`${project.title} Live Demo`}
-                                        >
-                                            <ExternalLink size={16} />
-                                        </a>
+                                        {project.live && (
+                                            <a
+                                                href={project.live}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-10 h-10 rounded-full border border-ink-faint/30 flex items-center justify-center text-ink-muted hover:border-accent hover:text-canvas hover:bg-accent transition-all"
+                                                aria-label={`${project.title} Live Demo`}
+                                            >
+                                                <ExternalLink size={16} />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
 
-                                {/* Title — editorial style with hover arrow */}
+                                {/* Title */}
                                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight mb-5 leading-tight group-hover:text-accent transition-colors duration-300 flex items-start gap-3">
                                     <span>{project.title}</span>
                                     <ArrowUpRight
@@ -105,7 +78,7 @@ export default function Projects() {
                                     />
                                 </h3>
 
-                                {/* Description — always visible */}
+                                {/* Description */}
                                 <p className="text-ink-muted text-base sm:text-lg leading-relaxed font-serif max-w-2xl mb-8">
                                     {project.desc}
                                 </p>
@@ -123,7 +96,7 @@ export default function Projects() {
                                 </div>
                             </div>
 
-                            {/* Bottom accent line that fills on hover */}
+                            {/* Bottom accent line */}
                             <div className="h-[3px] bg-ink-faint/10">
                                 <div className="h-full bg-accent w-0 group-hover:w-full transition-all duration-700 ease-out" />
                             </div>
