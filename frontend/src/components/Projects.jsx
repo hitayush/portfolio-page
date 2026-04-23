@@ -19,7 +19,7 @@ export default function Projects() {
             github: 'https://github.com/hitayush/Data.Dash',
             live: 'https://data-analysis-dashboard-six.vercel.app/',
             num: '02',
-            year: '2025',
+            year: '2026',
         },
         {
             title: 'Tic Tac Toe',
