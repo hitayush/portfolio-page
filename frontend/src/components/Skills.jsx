@@ -7,16 +7,20 @@ export default function Skills() {
             skills: ['Python', 'C++', 'JavaScript'],
         },
         {
-            title: 'Web',
-            skills: ['HTML', 'CSS', 'React (Learning)', 'Node.js (Learning)'],
+            title: 'Web & Frameworks',
+            skills: ['HTML', 'CSS', 'React', 'Node.js', 'FastAPI'],
         },
         {
-            title: 'Data',
-            skills: ['Pandas', 'NumPy', 'Basic ML'],
+            title: 'Data & Visualization',
+            skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+        },
+        {
+            title: 'AI & ML',
+            skills: ['Scikit-learn', 'LLMs', 'Ollama', 'LM Studio', 'Gemma', 'AI Integration'],
         },
         {
             title: 'Tools',
-            skills: ['Git', 'GitHub', 'VS Code'],
+            skills: ['Git', 'GitHub', 'VS Code', 'Claude Code', 'Anaconda', 'Jupyter Lab'],
         },
     ];
 
