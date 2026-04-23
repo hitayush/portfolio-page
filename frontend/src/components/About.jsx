@@ -1,55 +1,88 @@
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function About() {
+    const sectionRef = useRef(null);
+
+    const capabilities = [
+        {
+            title: 'Python',
+            desc: 'Strong foundational logic and problem-solving through clean, readable code.',
+        },
+        {
+            title: 'Data & AI',
+            desc: 'Exploring predictive models, data pipelines, and machine learning fundamentals.',
+        },
+        {
+            title: 'Full-Stack',
+            desc: 'Building seamless interfaces that connect frontend experiences to backend logic.',
+        },
+        {
+            title: 'Algorithms',
+            desc: 'Focused on structured thinking and efficient problem-solving approaches.',
+        },
+    ];
+
     return (
-        <section id="about" className="py-32 relative bg-transparent">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-                >
-                    <div className="flex flex-col md:flex-row gap-16 items-start">
-                        <div className="md:w-1/3">
-                            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tighter">
-                                Decoding Context.
-                            </h2>
-                            <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
+        <section id="about" ref={sectionRef} className="py-32 sm:py-40 relative">
+            <div className="max-w-6xl mx-auto px-5 sm:px-8">
+                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+                    {/* Left — heading */}
+                    <div className="lg:w-1/3 lg:sticky lg:top-32 self-start">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                        >
+                            <span className="text-accent text-sm font-medium tracking-wide uppercase mb-4 block">
                                 About Me
-                            </p>
-                        </div>
+                            </span>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight leading-tight mb-4">
+                                Building with
+                                <br />
+                                <span className="font-serif italic font-normal text-ink-muted">purpose.</span>
+                            </h2>
+                            <div className="section-divider" />
+                        </motion.div>
+                    </div>
 
-                        <div className="md:w-2/3 bg-white/5 rounded-3xl p-10 backdrop-blur-sm border border-white/5 hover:border-white/10 transition-colors duration-500">
-                            <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed mb-10 font-light">
-                                Hello! I am a dedicated Computer Science student with a strong drive for learning and building
-                                impactful software. My journey involves breaking down complex real-world problems into logical
-                                solutions, merging creativity with engineering.
-                            </p>
+                    {/* Right — content */}
+                    <div className="lg:w-2/3">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: 0.1 }}
+                            className="text-xl sm:text-2xl text-ink-muted leading-relaxed mb-16 font-serif"
+                        >
+                            I'm a <span className="text-ink font-medium">Computer Science student</span> with
+                            a drive for building impactful software. I break down complex problems
+                            into elegant, <span className="text-accent">logical solutions</span> — merging
+                            creativity with precise engineering.
+                        </motion.p>
 
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                {[
-                                    "Strong foundation in Python",
-                                    "Exploring Data Science & AI",
-                                    "Learning Full-Stack Development",
-                                    "Focused on DSA & Problem Solving"
-                                ].map((item, index) => (
-                                    <motion.li 
-                                        key={index}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-                                        className="flex items-center space-x-4 text-zinc-400 font-light"
-                                    >
-                                        <div className="w-1.5 h-1.5 rounded-full bg-white/50"></div>
-                                        <span>{item}</span>
-                                    </motion.li>
-                                ))}
-                            </ul>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            {capabilities.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: '-40px' }}
+                                    transition={{ duration: 0.5, delay: 0.08 * index }}
+                                    className="p-6 rounded-2xl bg-canvas-alt border border-ink-faint/20 hover:border-accent/30 transition-colors group"
+                                >
+                                    <h4 className="text-ink text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-ink-muted text-sm leading-relaxed font-serif">
+                                        {item.desc}
+                                    </p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

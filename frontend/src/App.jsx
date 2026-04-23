@@ -7,46 +7,33 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 
 function App() {
     const [activeSection, setActiveSection] = useState('home');
 
-    // Force dark mode
-    useEffect(() => {
-        document.documentElement.classList.add('dark');
-    }, []);
-
-
-    // Scroll Spy functionality
     useEffect(() => {
         const handleScroll = () => {
             const sections = ['home', 'about', 'education', 'skills', 'projects', 'contact'];
-            let current = '';
+            let current = 'home';
 
-            for (let i = 0; i < sections.length; i++) {
-                const section = document.getElementById(sections[i]);
-                if (section) {
-                    const sectionTop = section.offsetTop;
-                    // Subtracted extra offset to account for sticky navbar and trigger earlier
-                    if (window.scrollY >= sectionTop - 150) {
-                        current = sections[i];
-                    }
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (el && window.scrollY >= el.offsetTop - 200) {
+                    current = id;
                 }
             }
 
-            if (current && current !== activeSection) {
+            if (current !== activeSection) {
                 setActiveSection(current);
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, [activeSection]);
 
     return (
-        <div className="min-h-screen bg-transparent transition-colors duration-300">
-            <CustomCursor />
+        <div className="min-h-screen bg-canvas">
             <Navbar activeSection={activeSection} />
 
             <main>

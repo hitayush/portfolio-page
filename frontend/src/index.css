@@ -4,19 +4,14 @@
 
 @layer base {
     :root {
-        --bg-color: #ffffff;
-        --text-color: #333333;
-        --primary-color: #2563eb;
-        --secondary-color: #3b82f6;
-        --card-bg: #f3f4f6;
-    }
-
-    .dark {
-        --bg-color: #030303;
-        --text-color: #ffffff;
-        --primary-color: #ffffff;
-        --secondary-color: #a3a3a3;
-        --card-bg: rgba(20, 20, 20, 0.6);
+        --canvas: #FAF7F2;
+        --canvas-alt: #F0EBE3;
+        --ink: #2B2926;
+        --ink-muted: #8C8580;
+        --ink-faint: #C4BFBA;
+        --accent: #C45D3E;
+        --accent-hover: #A84B30;
+        --accent-subtle: rgba(196, 93, 62, 0.1);
     }
 
     html {
@@ -27,62 +22,55 @@
     }
 
     body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: 'Poppins', sans-serif;
+        background-color: var(--canvas);
+        color: var(--ink);
+        font-family: 'Sora', system-ui, -apple-system, sans-serif;
         overflow-x: hidden;
+        letter-spacing: -0.01em;
+    }
+
+    /* Selection color */
+    ::selection {
+        background-color: var(--accent);
+        color: white;
     }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar — warm palette */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-color);
+    background: var(--canvas);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
+    background: var(--ink-faint);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
+    background: var(--ink-muted);
 }
 
-/* Base glowing background for dark mode (from original CSS) */
-.bg-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: -1;
-    opacity: 0.5;
-    pointer-events: none;
+/* Utility: serif font */
+.font-serif-accent {
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 }
 
-.shape-1 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-    top: -20%;
-    left: -10%;
+/* Utility: section divider */
+.section-divider {
+    width: 48px;
+    height: 2px;
+    background-color: var(--accent);
+    border: none;
 }
 
-.shape-2 {
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 70%);
-    bottom: -30%;
-    right: -20%;
-}
-
-.shape-3 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Utility: editorial number */
+.editorial-number {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    color: var(--ink-faint);
+    font-weight: 300;
 }

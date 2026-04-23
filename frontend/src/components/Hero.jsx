@@ -1,157 +1,133 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
+import { ArrowDown } from 'lucide-react';
 
 export default function Hero() {
-    const { scrollY } = useScroll();
-    const imageOpacity = useTransform(scrollY, [0, 500], [1, 0]);
-    const imageY = useTransform(scrollY, [0, 500], [0, 150]);
-    const imageScale = useTransform(scrollY, [0, 500], [1, 0.85]);
-
-    // Staggered text animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.2,
-            },
+            transition: { staggerChildren: 0.12, delayChildren: 0.15 },
         },
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+        hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
-            filter: 'blur(0px)',
-            transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+            transition: { duration: 0.7, ease: [0.25, 1, 0.5, 1] },
         },
     };
 
     return (
-        <section id="home" className="min-h-screen flex items-center pt-24 relative overflow-hidden bg-transparent">
-            {/* Background glowing shapes */}
-            <div className="bg-glow shape-1 absolute"></div>
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-12">
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="max-w-3xl"
-                >
-                    <motion.div variants={itemVariants} className="mb-2">
-                        <span className="uppercase tracking-[0.2em] text-zinc-400 text-sm md:text-base font-semibold">
-                            Welcome
-                        </span>
-                    </motion.div>
-                    
-                    <motion.h1
-                        variants={itemVariants}
-                        className="text-6xl md:text-8xl lg:text-[7rem] font-bold tracking-tighter leading-[0.9] mb-6 text-white"
-                    >
-                        <span className="block opacity-90">Hi, I'm</span>
-                        <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-zinc-500">
-                            Hitayush.
-                        </span>
-                    </motion.h1>
-
+        <section id="home" className="min-h-screen flex items-center pt-24 pb-16 relative">
+            <div className="max-w-6xl mx-auto px-5 sm:px-8 w-full">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+                    {/* Text content */}
                     <motion.div
-                        variants={itemVariants}
-                        className="text-2xl md:text-4xl text-zinc-300 font-light mb-8 h-12"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="max-w-2xl"
                     >
-                        <Typewriter
-                            options={{
-                                strings: ['CSE Student.', 'Python Developer.', 'Aspiring Full-Stack.'],
-                                autoStart: true,
-                                loop: true,
-                                delay: 60,
-                                deleteSpeed: 30,
-                            }}
-                        />
+                        <motion.p
+                            variants={itemVariants}
+                            className="font-serif text-ink-muted text-lg mb-4 italic"
+                        >
+                            Hello, I'm
+                        </motion.p>
+
+                        <motion.h1
+                            variants={itemVariants}
+                            className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-4 text-ink"
+                        >
+                            Hitayush
+                            <br />
+                            <span className="text-accent">Dange</span>
+                            <span className="text-ink-faint">.</span>
+                        </motion.h1>
+
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-xl sm:text-2xl text-ink-muted font-light tracking-tight mb-8 h-9 font-serif"
+                        >
+                            <Typewriter
+                                options={{
+                                    strings: ['CSE Student', 'Python Developer', 'Aspiring Full-Stack Engineer'],
+                                    autoStart: true,
+                                    loop: true,
+                                    delay: 50,
+                                    deleteSpeed: 25,
+                                }}
+                            />
+                        </motion.div>
+
+                        <motion.p
+                            variants={itemVariants}
+                            className="text-base sm:text-lg text-ink-muted mb-10 max-w-lg leading-relaxed font-serif"
+                        >
+                            I'm a computer science student passionate about turning ideas into
+                            real-world applications — exploring AI, data science, and the craft
+                            of modern web development.
+                        </motion.p>
+
+                        <motion.div
+                            variants={itemVariants}
+                            className="flex flex-wrap gap-4 items-center"
+                        >
+                            <a
+                                href="#projects"
+                                className="inline-flex items-center gap-2 px-7 py-3.5 bg-ink text-canvas font-medium rounded-full hover:bg-accent transition-colors text-sm tracking-wide"
+                            >
+                                View My Work
+                            </a>
+                            <a
+                                href="#contact"
+                                className="inline-flex items-center gap-2 px-7 py-3.5 border border-ink-faint text-ink font-medium rounded-full hover:border-accent hover:text-accent transition-colors text-sm tracking-wide"
+                            >
+                                Get in Touch
+                            </a>
+                        </motion.div>
                     </motion.div>
 
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl leading-relaxed font-light"
-                    >
-                        We are decoding meanings. I am passionate about building real-world applications and exploring AI, data
-                        science, and modern web technologies. Bridging the gap between consultancy and execution.
-                    </motion.p>
-
+                    {/* Profile Image */}
                     <motion.div
-                        variants={itemVariants}
-                        className="flex flex-wrap gap-6 items-center"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, delay: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                        className="hidden lg:block shrink-0"
                     >
-                        <a href="#projects" className="relative hidden md:inline-flex group">
-                            <span className="absolute inset-0 bg-white blur-md opacity-30 group-hover:opacity-50 transition-opacity rounded-full"></span>
-                            <span className="relative px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-zinc-200 transition-colors uppercase tracking-widest text-sm text-center w-full md:w-auto">
-                                View Projects
-                            </span>
-                        </a>
-                        <a href="#projects" className="md:hidden w-full px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-zinc-200 transition-colors uppercase tracking-widest text-sm text-center">
-                            View Projects
-                        </a>
-                        <a href="#contact" className="px-8 py-4 border border-zinc-700 hover:border-white font-semibold rounded-full transition-all uppercase tracking-widest text-sm text-zinc-300 hover:text-white w-full md:w-auto text-center hover:bg-white/5">
-                            Let's Talk
-                        </a>
+                        <div className="relative w-[340px] h-[420px] rounded-3xl overflow-hidden shadow-[0_24px_80px_-12px_rgba(43,41,38,0.15)] border border-ink-faint/20">
+                            <img
+                                src="/profile.jpg"
+                                alt="Hitayush Dange"
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                    e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop';
+                                }}
+                            />
+                            {/* Warm bottom fade */}
+                            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-canvas/60 to-transparent pointer-events-none" />
+                        </div>
                     </motion.div>
-                </motion.div>
-
-                {/* Dynamic Floating Profile Image */}
-                <motion.div 
-                    style={{ opacity: imageOpacity, y: imageY, scale: imageScale }}
-                    className="hidden lg:block relative shrink-0"
-                >
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                        animate={{ 
-                            opacity: 1, 
-                            scale: 1, 
-                            filter: 'blur(0px)',
-                            y: [0, -15, 0]
-                        }}
-                        transition={{ 
-                            opacity: { duration: 1.2, delay: 0.4, ease: [0.25, 1, 0.5, 1] },
-                            scale: { duration: 1.2, delay: 0.4, ease: [0.25, 1, 0.5, 1] },
-                            filter: { duration: 1.2, delay: 0.4, ease: [0.25, 1, 0.5, 1] },
-                            y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                        className="relative w-[380px] h-[480px] rounded-[2rem] border border-white/5 overflow-hidden shadow-2xl group"
-                    >
-                        {/* Glow and Fade Effects */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent z-10 pointer-events-none group-hover:opacity-40 transition-opacity duration-700"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#030303_110%)] z-20 pointer-events-none group-hover:opacity-60 transition-opacity duration-700"></div>
-                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#030303] to-transparent z-20 pointer-events-none opacity-90 group-hover:opacity-70 transition-opacity duration-700"></div>
-
-                        <img 
-                            src="/profile.jpg" 
-                            alt="Hitayush" 
-                            className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 scale-[1.03] group-hover:scale-100"
-                            onError={(e) => {
-                                e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop';
-                            }}
-                        />
-                    </motion.div>
-                </motion.div>
+                </div>
             </div>
-            
+
             {/* Scroll Indicator */}
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+                transition={{ delay: 1.8, duration: 0.8 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
-                <span className="text-zinc-500 text-xs uppercase tracking-widest mb-2">Scroll</span>
-                <div className="w-[1px] h-12 bg-white/10 overflow-hidden relative">
-                    <motion.div 
-                        animate={{ y: [0, 50] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                        className="w-full h-1/2 bg-white absolute top-0"
-                    />
-                </div>
+                <span className="text-ink-faint text-xs tracking-widest uppercase">Scroll</span>
+                <motion.div
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+                >
+                    <ArrowDown size={16} className="text-ink-faint" />
+                </motion.div>
             </motion.div>
         </section>
     );

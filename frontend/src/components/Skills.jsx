@@ -3,90 +3,75 @@ import { motion } from 'framer-motion';
 export default function Skills() {
     const skillCategories = [
         {
-            title: "Programming",
-            skills: ["Python", "C++", "JavaScript"]
+            title: 'Programming',
+            skills: ['Python', 'C++', 'JavaScript'],
         },
         {
-            title: "Web",
-            skills: ["HTML", "CSS", "React (Learning)", "Node.js (Learning)"]
+            title: 'Web',
+            skills: ['HTML', 'CSS', 'React (Learning)', 'Node.js (Learning)'],
         },
         {
-            title: "Data",
-            skills: ["Pandas", "NumPy", "Basic Machine Learning"]
+            title: 'Data',
+            skills: ['Pandas', 'NumPy', 'Basic ML'],
         },
         {
-            title: "Tools",
-            skills: ["Git", "GitHub", "VS Code"]
-        }
+            title: 'Tools',
+            skills: ['Git', 'GitHub', 'VS Code'],
+        },
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, scale: 0.95, y: 30 },
-        visible: { 
-            opacity: 1, 
-            scale: 1, 
-            y: 0,
-            transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] }
-        }
-    };
-
     return (
-        <section id="skills" className="py-32 bg-transparent relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <section id="skills" className="py-32 relative">
+            <div className="max-w-6xl mx-auto px-5 sm:px-8">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-                    className="mb-20 text-center"
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                    className="mb-16"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
-                        Technical Arsenal.
-                    </h2>
-                    <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
+                    <span className="text-accent text-sm font-medium tracking-wide uppercase mb-4 block">
                         Skills & Tools
-                    </p>
+                    </span>
+                    <h2 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight leading-tight mb-4">
+                        Technical
+                        <br />
+                        <span className="font-serif italic font-normal text-ink-muted">toolkit.</span>
+                    </h2>
+                    <div className="section-divider" />
                 </motion.div>
 
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-                >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                     {skillCategories.map((category, idx) => (
                         <motion.div
                             key={idx}
-                            variants={itemVariants}
-                            className="bg-[#0a0a0a] p-8 rounded-[2rem] border border-white/5 hover:border-white/20 transition-all duration-500 group relative overflow-hidden"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.08 }}
+                            className="group"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            
-                            <h3 className="text-2xl font-bold mb-6 text-white tracking-tight relative z-10">
+                            <h3 className="text-xs font-semibold text-ink-muted uppercase tracking-widest mb-5 flex items-center gap-3">
+                                <span className="w-5 h-[1px] bg-accent" />
                                 {category.title}
                             </h3>
-                            <ul className="space-y-4 relative z-10">
+                            <div className="flex flex-wrap gap-2.5">
                                 {category.skills.map((skill, skillIdx) => (
-                                    <li key={skillIdx} className="flex items-center space-x-3 text-zinc-400 font-light group/item">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover/item:bg-white transition-colors duration-300"></div>
-                                        <span className="group-hover/item:text-zinc-200 transition-colors duration-300">{skill}</span>
-                                    </li>
+                                    <motion.span
+                                        key={skillIdx}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.3, delay: skillIdx * 0.05 }}
+                                        className="px-4 py-2.5 bg-canvas-alt border border-ink-faint/20 rounded-xl text-sm font-medium text-ink hover:border-accent hover:text-accent hover:bg-accent-subtle transition-all cursor-default"
+                                    >
+                                        {skill}
+                                    </motion.span>
                                 ))}
-                            </ul>
+                            </div>
                         </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

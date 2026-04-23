@@ -17,10 +17,8 @@ export default function Contact() {
         setStatus({ submitting: true, success: false, error: false });
 
         try {
-            // Using EmailJS to send the form data
-            // Log env variables to check if Vite loaded them (Warning: don't leave this in production)
             if (!import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
-                console.error("EmailJS environment variables are missing! Did you restart the Vite dev server after creating the .env file?");
+                console.error("EmailJS environment variables are missing!");
                 throw new Error("Missing EmailJS environment variables.");
             }
 
@@ -28,9 +26,7 @@ export default function Contact() {
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 form.current,
-                {
-                    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-                }
+                { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
             );
 
             if (result.text === 'OK') {
@@ -44,81 +40,91 @@ export default function Contact() {
         }
     };
 
+    const inputClasses =
+        'w-full px-5 py-4 rounded-xl bg-canvas border border-ink-faint/30 text-ink focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all placeholder:text-ink-faint font-serif text-base';
+
     return (
-        <section id="contact" className="py-32 relative bg-transparent">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="py-32 relative">
+            <div className="max-w-6xl mx-auto px-5 sm:px-8">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-                    className="mb-20 text-center"
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                    className="mb-16 text-center"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
-                        Let's Talk.
+                    <span className="text-accent text-sm font-medium tracking-wide uppercase mb-4 block">
+                        Get in Touch
+                    </span>
+                    <h2 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight mb-4">
+                        Let's <span className="font-serif italic font-normal text-ink-muted">talk.</span>
                     </h2>
-                    <p className="uppercase tracking-[0.2em] text-zinc-500 text-sm font-semibold">
-                        Get in touch
-                    </p>
+                    <div className="section-divider mx-auto" />
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                     {/* Form */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-                        className="bg-[#0a0a0a] p-10 rounded-[2rem] border border-white/5"
+                        transition={{ duration: 0.7 }}
+                        className="bg-canvas-alt p-8 sm:p-10 rounded-3xl border border-ink-faint/20"
                     >
-                        <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+                        <form ref={form} onSubmit={handleSubmit} className="space-y-5">
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-zinc-400 mb-2 uppercase tracking-wide">Name</label>
+                                <label htmlFor="contact-name" className="block text-xs font-semibold text-ink-muted mb-2 uppercase tracking-widest">
+                                    Name
+                                </label>
                                 <input
                                     type="text"
-                                    id="name"
+                                    id="contact-name"
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
-                                    placeholder="Your Name"
-                                    className="w-full px-5 py-4 rounded-xl border border-white/5 bg-white/5 text-white focus:outline-none focus:border-white/30 transition-colors placeholder:text-zinc-600"
+                                    placeholder="Your name"
+                                    className={inputClasses}
                                 />
                             </div>
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-zinc-400 mb-2 uppercase tracking-wide">Email</label>
+                                <label htmlFor="contact-email" className="block text-xs font-semibold text-ink-muted mb-2 uppercase tracking-widest">
+                                    Email
+                                </label>
                                 <input
                                     type="email"
-                                    id="email"
+                                    id="contact-email"
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
                                     placeholder="your.email@example.com"
-                                    className="w-full px-5 py-4 rounded-xl border border-white/5 bg-white/5 text-white focus:outline-none focus:border-white/30 transition-colors placeholder:text-zinc-600"
+                                    className={inputClasses}
                                 />
                             </div>
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-zinc-400 mb-2 uppercase tracking-wide">Message</label>
+                                <label htmlFor="contact-message" className="block text-xs font-semibold text-ink-muted mb-2 uppercase tracking-widest">
+                                    Message
+                                </label>
                                 <textarea
-                                    id="message"
+                                    id="contact-message"
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
                                     rows="5"
                                     placeholder="How can I help you?"
-                                    className="w-full px-5 py-4 rounded-xl border border-white/5 bg-white/5 text-white focus:outline-none focus:border-white/30 transition-colors placeholder:text-zinc-600 resize-none"
-                                ></textarea>
+                                    className={`${inputClasses} resize-none`}
+                                />
                             </div>
 
                             {status.success && (
-                                <div className="p-4 bg-emerald-900/20 text-emerald-400 border border-emerald-500/20 rounded-xl text-sm font-medium">
+                                <div className="p-4 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl text-sm font-medium">
                                     Message sent successfully!
                                 </div>
                             )}
                             {status.error && (
-                                <div className="p-4 bg-red-900/20 text-red-400 border border-red-500/20 rounded-xl text-sm font-medium">
+                                <div className="p-4 bg-red-50 text-red-600 border border-red-200 rounded-xl text-sm font-medium">
                                     Failed to send message. Please try again.
                                 </div>
                             )}
@@ -126,12 +132,12 @@ export default function Contact() {
                             <button
                                 type="submit"
                                 disabled={status.submitting}
-                                className="w-full py-4 px-6 bg-white text-black font-bold uppercase tracking-widest rounded-xl hover:bg-zinc-200 transition-colors flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                                className="w-full py-4 px-6 bg-ink text-canvas font-semibold rounded-xl hover:bg-accent transition-colors flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed text-sm tracking-wide"
                             >
                                 {status.submitting ? 'Sending...' : (
                                     <>
                                         Send Message
-                                        <Send size={18} />
+                                        <Send size={16} />
                                     </>
                                 )}
                             </button>
@@ -140,46 +146,65 @@ export default function Contact() {
 
                     {/* Contact Info */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
+                        transition={{ duration: 0.7, delay: 0.15 }}
                         className="flex flex-col justify-center"
                     >
-                        <div className="bg-gradient-to-br from-zinc-900/50 to-[#0a0a0a] border border-white/5 p-10 rounded-[2rem] text-white">
-                            <h3 className="text-3xl font-bold mb-6 tracking-tight">Connect directly</h3>
-                            <p className="text-zinc-400 font-light leading-relaxed mb-10 text-lg">
-                                Feel free to reach out for collaborations, opportunities, or just to say hi! I'm always open to discussing new projects and creative ideas.
+                        <div className="bg-canvas-alt border border-ink-faint/20 p-8 sm:p-10 rounded-3xl">
+                            <h3 className="text-2xl font-bold text-ink mb-3 tracking-tight">
+                                Connect directly
+                            </h3>
+                            <p className="text-ink-muted font-serif leading-relaxed mb-8">
+                                Feel free to reach out for collaborations, opportunities,
+                                or just to say hi. I'm always open to discussing new
+                                projects and ideas.
                             </p>
 
-                            <div className="space-y-6">
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hitayushdange@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-4 rounded-2xl border border-transparent hover:bg-white/5 hover:border-white/10 transition-all group">
-                                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
-                                        <Mail size={24} />
+                            <div className="space-y-3">
+                                <a
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=hitayushdange@gmail.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-5 p-4 rounded-2xl hover:bg-canvas transition-colors group"
+                                >
+                                    <div className="w-12 h-12 bg-canvas border border-ink-faint/20 rounded-full flex items-center justify-center text-ink-muted group-hover:bg-accent group-hover:text-canvas group-hover:border-accent transition-all">
+                                        <Mail size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-1">Email</p>
-                                        <p className="font-medium text-lg">hitayushdange@gmail.com</p>
+                                        <p className="text-xs font-semibold text-ink-muted uppercase tracking-widest mb-0.5">Email</p>
+                                        <p className="font-medium text-ink text-sm">hitayushdange@gmail.com</p>
                                     </div>
                                 </a>
 
-                                <a href="https://www.linkedin.com/in/hitayush-dange-65831a38b/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-4 rounded-2xl border border-transparent hover:bg-white/5 hover:border-white/10 transition-all group">
-                                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-[#0077b5] group-hover:border-[#0077b5] group-hover:text-white transition-colors duration-300">
-                                        <Linkedin size={24} />
+                                <a
+                                    href="https://www.linkedin.com/in/hitayush-dange-65831a38b/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-5 p-4 rounded-2xl hover:bg-canvas transition-colors group"
+                                >
+                                    <div className="w-12 h-12 bg-canvas border border-ink-faint/20 rounded-full flex items-center justify-center text-ink-muted group-hover:bg-[#0077b5] group-hover:text-white group-hover:border-[#0077b5] transition-all">
+                                        <Linkedin size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-1">LinkedIn</p>
-                                        <p className="font-medium text-lg">Hitayush Dange</p>
+                                        <p className="text-xs font-semibold text-ink-muted uppercase tracking-widest mb-0.5">LinkedIn</p>
+                                        <p className="font-medium text-ink text-sm">Hitayush Dange</p>
                                     </div>
                                 </a>
 
-                                <a href="https://github.com/hitayush" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-4 rounded-2xl border border-transparent hover:bg-white/5 hover:border-white/10 transition-all group">
-                                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
-                                        <GithubIcon size={24} />
+                                <a
+                                    href="https://github.com/hitayush"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-5 p-4 rounded-2xl hover:bg-canvas transition-colors group"
+                                >
+                                    <div className="w-12 h-12 bg-canvas border border-ink-faint/20 rounded-full flex items-center justify-center text-ink-muted group-hover:bg-ink group-hover:text-canvas group-hover:border-ink transition-all">
+                                        <GithubIcon size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-1">GitHub</p>
-                                        <p className="font-medium text-lg">hitayush</p>
+                                        <p className="text-xs font-semibold text-ink-muted uppercase tracking-widest mb-0.5">GitHub</p>
+                                        <p className="font-medium text-ink text-sm">hitayush</p>
                                     </div>
                                 </a>
                             </div>
